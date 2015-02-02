@@ -1,20 +1,20 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a sample server Petstore server.\n\n[Learn about Swagger](http://swagger.wordnik.com) or join the IRC channel `#swagger` on irc.freenode.net.\n\nFor this sample, you can use the api key `special-key` to test the authorization filters\n",
+        "description": "This is the explorer for ChopAPI\n",
         "version": "1.0.0",
-        "title": "Swagger Petstore",
-        "termsOfService": "http://helloreverb.com/terms/",
+        "title": "ChopAPI",
+        "termsOfService": "http://trychop.com/terms",
         "contact": {
-            "name": "apiteam@wordnik.com"
+            "name": "henry@trychop.com"
         },
         "license": {
             "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "host": "petstore.swagger.wordnik.com",
-    "basePath": "/v2",
+    "host": "trychop.com",
+    "basePath": "/ChopAPI",
     "schemes": [
         "http"
     ],
@@ -26,6 +26,29 @@
                 ],
                 "produces": [
                     "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "grant_type",
+                        "in": "body",
+                        "type": "string",
+                        "description": "set to password"
+                    },
+                    {
+                        "name": "client_id",
+                        "type": "string",
+                        "description": "set to iOSApp"
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -52,8 +75,8 @@
                 ],
                 "parameters": [
                     {
+                        "name": "username",
                         "in": "body",
-                        "name": "body",
                         "description": "Pet object that needs to be added to the store",
                         "required": false,
                         "schema": {
