@@ -133,11 +133,30 @@
                         "format": "double",
                         "required": true,
                         "description": "longitude in double notation"
+                    },
+                    {
+                        "in": "query",
+                        "name": "hilimit",
+                        "type": "number",
+                        "format": "int32",
+                        "required": true,
+                        "default": 20
+                    },
+                    {
+                        "in": "query",
+                        "name": "lowlimit",
+                        "type": "number",
+                        "format": "int32",
+                        "required": true,
+                        "default": 0
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK"
+                    },
+                    "400": {
+                        "description": "missing parameter"
                     }
                 }
             }
@@ -282,26 +301,31 @@
                 },
                 "phoneNumber": {
                     "type": "number",
-                    "format": "int32"
+                    "format": "int32",
+                    "default": 0
                 },
                 "birthdate": {
                     "type": "string"
                 },
                 "gender": {
                     "type": "number",
-                    "format": "int32"
+                    "format": "int32",
+                    "default": 0
                 },
                 "genderPreference": {
                     "type": "number",
-                    "format": "int32"
+                    "format": "int32",
+                    "default": 0
                 },
                 "relationshipStatus": {
                     "type": "number",
-                    "format": "int32"
+                    "format": "int32",
+                    "default": 0
                 },
                 "dietaryPreference": {
                     "type": "number",
-                    "format": "int32"
+                    "format": "int32",
+                    "default": 0
                 }
             }
         }
