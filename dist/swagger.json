@@ -31,7 +31,7 @@
                     {
                         "name": "oauth request body",
                         "in": "body",
-                        "description": "this is the request body for the password flow",
+                        "description": "This is the request body for the grant type password oauth flow. It will give you a new valid access token if you enter an existing valid username and password",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/oauthrequest"
@@ -48,16 +48,17 @@
         "/user": {
             "post": {
                 "consumes": [
-                    "application/json"
+                    "application/json",
+                    "application/x-www-urlencoded-form"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "user object",
+                        "name": "createuser object",
                         "in": "body",
-                        "description": "create a new user",
+                        "description": "This creates a new, credentialed user in the db",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/createuser"
@@ -67,6 +68,12 @@
                 "responses": {
                     "201": {
                         "description": "created"
+                    },
+                    "412": {
+                        "description": "precondition failed"
+                    },
+                    "424": {
+                        "description": "db write error"
                     }
                 }
             }
