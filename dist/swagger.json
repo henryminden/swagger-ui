@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is the API explorer for the ChopAPI.",
+        "description": "This is the API explorer for the ChopAPI. This is a partial collection of the full suite of methods available in the ChopAPI. Coming soon -- credit, invite, kitchen, notification, order, and review",
         "version": "1.0.0",
         "title": "ChopAPI",
         "termsOfService": "http://trychop.com/terms",
