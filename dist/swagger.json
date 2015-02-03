@@ -53,6 +53,7 @@
                 "tags": [
                     "user"
                 ],
+                "summary": "Create a new user",
                 "consumes": [
                     "application/json"
                 ],
@@ -81,11 +82,14 @@
                         "description": "db write error"
                     }
                 }
-            },
+            }
+        },
+        "/user/{userId}": {
             "put": {
                 "tags": [
                     "user"
                 ],
+                "summary": "Update existing userId",
                 "consumes": [
                     "application/json"
                 ],
@@ -93,6 +97,13 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "description": "Unique user identifier",
+                        "required": true,
+                        "type": "number"
+                    },
                     {
                         "name": "updateUser object",
                         "in": "body",
@@ -795,26 +806,26 @@
                 },
                 "phoneNumber": {
                     "type": "number",
-                    "format": "int"
+                    "format": "int32"
                 },
                 "birthdate": {
                     "type": "string"
                 },
                 "gender": {
                     "type": "number",
-                    "format": "int"
+                    "format": "int32"
                 },
                 "genderPreference": {
                     "type": "number",
-                    "format": "int"
+                    "format": "int32"
                 },
                 "relationshipStatus": {
                     "type": "number",
-                    "format": "int"
+                    "format": "int32"
                 },
                 "dietaryPreference": {
                     "type": "number",
-                    "format": "int"
+                    "format": "int32"
                 }
             }
         },
