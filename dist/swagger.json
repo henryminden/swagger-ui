@@ -84,7 +84,48 @@
                 }
             }
         },
+        "/user/me": {
+            "get": {
+                "summary": "Get my user object (needs access token)",
+                "description": "Gets user object associated with current access token",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "tags": [
+                    "user"
+                ]
+            }
+        },
         "/user/{userId}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get user by id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "description": "Unique user identifier",
+                        "required": true,
+                        "type": "number",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
             "put": {
                 "tags": [
                     "user"
@@ -102,7 +143,8 @@
                         "name": "userId",
                         "description": "Unique user identifier",
                         "required": true,
-                        "type": "number"
+                        "type": "number",
+                        "format": "int32"
                     },
                     {
                         "name": "updateUser object",
