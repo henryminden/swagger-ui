@@ -21,6 +21,9 @@
     "paths": {
         "/oauth": {
             "post": {
+                "tags": [
+                    "oauth"
+                ],
                 "consumes": [
                     "application/json"
                 ],
@@ -47,21 +50,23 @@
         },
         "/user": {
             "post": {
+                "tags": [
+                    "user"
+                ],
                 "consumes": [
-                    "application/json",
-                    "application/x-www-urlencoded-form"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "createuser object",
+                        "name": "createUser object",
                         "in": "body",
                         "description": "This creates a new, credentialed user in the db",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/createuser"
+                            "$ref": "#/definitions/createUser"
                         }
                     }
                 ],
@@ -74,6 +79,33 @@
                     },
                     "424": {
                         "description": "db write error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "updateUser object",
+                        "in": "body",
+                        "description": "This updates the user object. Must have access token belonging to user you are trying to update.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/updateUser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "updated"
                     }
                 }
             }
@@ -729,7 +761,7 @@
                 }
             }
         },
-        "createuser": {
+        "createUser": {
             "properties": {
                 "username": {
                     "type": "string"
@@ -739,6 +771,50 @@
                 },
                 "confirmPassword": {
                     "type": "string"
+                }
+            }
+        },
+        "updateUser": {
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "appleDeviceToken": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "float"
+                },
+                "phoneNumber": {
+                    "type": "number",
+                    "format": "int"
+                },
+                "birthdate": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "number",
+                    "format": "int"
+                },
+                "genderPreference": {
+                    "type": "number",
+                    "format": "int"
+                },
+                "relationshipStatus": {
+                    "type": "number",
+                    "format": "int"
+                },
+                "dietaryPreference": {
+                    "type": "number",
+                    "format": "int"
                 }
             }
         },
