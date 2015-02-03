@@ -157,6 +157,9 @@
                     },
                     "400": {
                         "description": "missing parameter"
+                    },
+                    "403": {
+                        "description": "forbidden, requires access token"
                     }
                 }
             }
