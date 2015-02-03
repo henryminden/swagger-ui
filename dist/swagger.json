@@ -90,11 +90,56 @@
                 "responses": {
                     "200": {
                         "description": "OK"
+                    },
+                    "403": {
+                        "description": "unauthorized"
                     }
                 },
                 "tags": [
                     "user"
                 ]
+            }
+        },
+        "/chop": {
+            "get": {
+                "tags": [
+                    "chop"
+                ],
+                "summary": "Get chops by latitude and longitude",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "fetchType",
+                        "type": "string",
+                        "default": "fetchByDistanceFromLatLon",
+                        "required": true,
+                        "description": "put fetchByDistanceFromLatLon here"
+                    },
+                    {
+                        "in": "query",
+                        "name": "latitude",
+                        "type": "number",
+                        "format": "double",
+                        "required": true,
+                        "description": "latitude in double notation"
+                    },
+                    {
+                        "in": "query",
+                        "name": "longitude",
+                        "type": "number",
+                        "format": "double",
+                        "required": true,
+                        "description": "longitude in double notation"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
             }
         },
         "/user/{userId}": {
@@ -194,12 +239,12 @@
                 "grant_type": {
                     "type": "string",
                     "description": "set this to password",
-                    "defaultValue": "password"
+                    "default": "password"
                 },
                 "client_id": {
                     "type": "string",
                     "description": "set this to iOSApp",
-                    "defaultValue": "iOSApp"
+                    "default": "iOSApp"
                 }
             }
         },
