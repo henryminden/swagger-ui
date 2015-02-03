@@ -29,9 +29,9 @@
                 ],
                 "parameters": [
                     {
-                        "name": "body",
+                        "name": "oauth request body",
                         "in": "body",
-                        "description": "whatever",
+                        "description": "this is the request body for the password flow",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/oauthrequest"
@@ -41,6 +41,32 @@
                 "responses": {
                     "200": {
                         "description": "Ok"
+                    }
+                }
+            }
+        },
+        "/user": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user object",
+                        "in": "body",
+                        "description": "create a new user",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/createuser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "created"
                     }
                 }
             }
@@ -76,15 +102,7 @@
                     "405": {
                         "description": "Invalid input"
                     }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write_pets",
-                            "read_pets"
-                        ]
-                    }
-                ]
+                }
             },
             "put": {
                 "tags": [
@@ -122,15 +140,7 @@
                     "405": {
                         "description": "Validation exception"
                     }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write_pets",
-                            "read_pets"
-                        ]
-                    }
-                ]
+                }
             }
         },
         "/pets/findByStatus": {
@@ -171,15 +181,7 @@
                     "400": {
                         "description": "Invalid status value"
                     }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write_pets",
-                            "read_pets"
-                        ]
-                    }
-                ]
+                }
             }
         },
         "/pets/findByTags": {
@@ -220,15 +222,7 @@
                     "400": {
                         "description": "Invalid tag value"
                     }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write_pets",
-                            "read_pets"
-                        ]
-                    }
-                ]
+                }
             }
         },
         "/pets/{petId}": {
@@ -266,18 +260,7 @@
                     "404": {
                         "description": "Pet not found"
                     }
-                },
-                "security": [
-                    {
-                        "api_key": []
-                    },
-                    {
-                        "petstore_auth": [
-                            "write_pets",
-                            "read_pets"
-                        ]
-                    }
-                ]
+                }
             },
             "post": {
                 "tags": [
@@ -320,15 +303,7 @@
                     "405": {
                         "description": "Invalid input"
                     }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write_pets",
-                            "read_pets"
-                        ]
-                    }
-                ]
+                }
             },
             "delete": {
                 "tags": [
@@ -362,15 +337,7 @@
                     "400": {
                         "description": "Invalid pet value"
                     }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write_pets",
-                            "read_pets"
-                        ]
-                    }
-                ]
+                }
             }
         },
         "/stores/order": {
@@ -736,22 +703,6 @@
             }
         }
     },
-    "securityDefinitions": {
-        "api_key": {
-            "type": "apiKey",
-            "name": "api_key",
-            "in": "header"
-        },
-        "petstore_auth": {
-            "type": "oauth2",
-            "authorizationUrl": "http://petstore.swagger.wordnik.com/api/oauth/dialog",
-            "flow": "implicit",
-            "scopes": {
-                "write_pets": "modify pets in your account",
-                "read_pets": "read your pets"
-            }
-        }
-    },
     "definitions": {
         "oauthrequest": {
             "properties": {
@@ -762,9 +713,24 @@
                     "type": "string"
                 },
                 "grant_type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "set this to password"
                 },
                 "client_id": {
+                    "type": "string",
+                    "description": "set this to iOSApp"
+                }
+            }
+        },
+        "createuser": {
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "confirmPassword": {
                     "type": "string"
                 }
             }
