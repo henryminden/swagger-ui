@@ -226,8 +226,8 @@
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "updated"
+                    "200": {
+                        "description": "Updated"
                     }
                 }
             },
